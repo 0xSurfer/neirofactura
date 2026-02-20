@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейс РИЧ — AI-аудит и пайплайны для FMCG | NEIROFACTURA</title>
+    <meta name="description" content="Как диджитал-агентство Топ-5 в SMM внедрило ИИ для масштабирования продакшена. AI-аудит, креативный copilot, генерация контента для FMCG-брендов.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" href="../assets/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syncopate:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    
+    <style>
+        .case-header {
+            padding: 160px 40px 80px;
+            position: relative;
+            z-index: 10;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .case-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .case-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 60px;
+        }
+
+        .case-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            border-top: 1px solid var(--grid-line);
+            padding-top: 40px;
+        }
+
+        .meta-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .content-section {
+            padding: 80px 40px;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #888;
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .section-text {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background-color: var(--grid-line);
+            border: 1px solid var(--grid-line);
+            margin-top: 40px;
+        }
+
+        .metric-card {
+            background-color: var(--bg-color);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .metric-desc {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .image-gallery {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .gallery-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: #111;
+            border: 1px solid var(--grid-line);
+            overflow: hidden;
+        }
+
+        .gallery-img img,
+        .gallery-img video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-img.wide {
+            grid-column: span 2;
+            aspect-ratio: 21/9;
+        }
+
+        .gallery-img.tall {
+            aspect-ratio: 4/5; /* Пропорции как у rich_new_1 */
+        }
+
+        .next-project {
+            text-align: center;
+            padding: 100px 40px;
+            border-top: 1px solid var(--grid-line);
+        }
+
+        .next-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .next-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: opacity 0.3s;
+            position: relative;
+        }
+
+        .next-title:hover {
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .content-section { grid-template-columns: 1fr; gap: 40px; }
+            .case-meta-grid { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .section-label { position: static; }
+            .image-gallery { grid-template-columns: 1fr; }
+            .gallery-img.wide { grid-column: span 1; aspect-ratio: 16/9; }
+            .case-header { padding: 140px 24px 60px; }
+            .content-section { padding: 60px 24px; }
+            .image-gallery { padding: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .case-meta-grid { grid-template-columns: 1fr; }
+            .metric-value { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+    
+    <div class="grid-lines">
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+    </div>
+    
+    <div class="corner-mark tl"></div>
+    <div class="corner-mark tr"></div>
+    <div class="corner-mark bl"></div>
+    <div class="corner-mark br"></div>
+    
+    <header class="header">
+        <a href="https://neirofactura.ru/" class="brand glitch-hover">NEIROFACTURA™</a>
+        <button class="burger" aria-label="Открыть меню">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+        </button>
+        <nav class="nav nav--desktop">
+            <a href="https://neirofactura.ru/#methodology" class="nav__link">Методология</a>
+            <a href="https://neirofactura.ru/#services" class="nav__link">Услуги</a>
+            <a href="https://neirofactura.ru/#portfolio" class="nav__link">Кейсы</a>
+            <a href="https://neirofactura.ru/#contact" class="nav__link">Контакты</a>
+        </nav>
+    </header>
+    
+    <nav class="nav nav--mobile">
+        <a href="https://neirofactura.ru/#methodology" class="nav__link">Методология</a>
+        <a href="https://neirofactura.ru/#services" class="nav__link">Услуги</a>
+        <a href="https://neirofactura.ru/#portfolio" class="nav__link">Кейсы</a>
+        <a href="https://neirofactura.ru/#contact" class="nav__link">Контакты</a>
+    </nav>
+
+    <main>
+        <section class="case-header">
+            <div class="case-category">Кейс // 001</div>
+            <h1 class="case-title">РИЧ X<br>NEIROFACTURA</h1>
+            
+            <div class="case-meta-grid">
+                <div class="meta-col">
+                    <div class="meta-label">Клиент</div>
+                    <div class="meta-value">РЕКЛАМА И ЧЕЛОВЕК —<br>ДИДЖИТАЛ АГЕНТСТВО</div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">Услуги</div>
+                    <div class="meta-value">AI-Аудит / Креативный Copilot /<br>Пайплайны для визуалов</div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">Индустрия</div>
+                    <div class="meta-value">Digital Marketing / FMCG</div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">Год</div>
+                    <div class="meta-value">2026</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">О ПРОЕКТЕ</div>
+            <div class="section-text">
+                РИЧ — одно из ведущих диджитал-агентств РФ (Топ-5 в категории SMM), реализующее проекты для Яндекса, Альфа-Банка, МТС и FMCG-гигантов. Нашей задачей было выступить инфраструктурным партнером: перевести часть продакшена агентства на автономные ИИ-рельсы для масштабирования без раздувания штата. Технологическим полигоном стал концепт выдуманного FMCG-бренда «Хэлси».
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">ЗАДАЧА</div>
+            <div class="section-text">
+                Современный SMM в сегменте FMCG сместился в сторону неформального общения «на ты»: короткие форматы в Telegram, эффект «дружеского чата» и мгновенная реакция на тренды. Базовые нейросети не способны генерировать такой контент — они звучат сухо и не понимают иронии. Агентству требовалась система, способная автономно производить как сложную продуктовую графику, так и живые тексты в актуальном культурном коде.
+            </div>
+        </section>
+
+        <section class="image-gallery">
+            <div class="gallery-img wide">
+                <img src="../assets/rich_hero.webp" alt="РИЧ — кейс-визуал">
+            </div>
+            <!-- Шахматный ряд 1: видео слева, изображение 2 справа -->
+            <div class="gallery-img">
+                <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
+                    <source src="../assets/rich_left.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="gallery-img">
+                <img src="../assets/rich_static_2.webp" alt="РИЧ — статичный кадр 2">
+            </div>
+            <!-- Шахматный ряд 2: изображение 1 слева, видео справа -->
+            <div class="gallery-img">
+                <img src="../assets/rich_static_1.webp" alt="РИЧ — статичный кадр 1">
+            </div>
+            <div class="gallery-img">
+                <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
+                    <source src="../assets/rich_right.mp4" type="video/mp4">
+                </video>
+            </div>
+            <!-- Дополнительный ряд: new2 слева, new1 справа (пропорции как new1) -->
+            <div class="gallery-img tall">
+                <img src="../assets/rich_new_2.webp" alt="РИЧ — дополнительный кадр 2">
+            </div>
+            <div class="gallery-img tall">
+                <img src="../assets/rich_new_1.webp" alt="РИЧ — дополнительный кадр 1">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">РЕШЕНИЕ</div>
+            <div class="section-text">
+                NEIROFACTURA развернула для креативной команды РИЧ гибридную инфраструктуру:<br><br><span class="methodology-highlight">Креативный Copilot.</span> Мы спарсили по 250+ постов с 4 референсных Telegram-каналов брендов. Отфильтровали датасет по показателю Engagement Rate (ER), выделив математически успешные паттерны. На этой базе обучили субагентов, дополнительно обогатив их «базой мемов» для точного понимания контекста и отсылок.<br><br><span class="methodology-highlight">Визуальный синтез.</span> Настроили генеративные пайплайны (Midjourney / Nano Banana Pro / Kling) для потокового создания лайфстайл-имиджей и продуктовой графики, строго подчиненной бренд-гайдлайнам, полностью отказавшись от стоков и реальных съемок.
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">РЕЗУЛЬТАТЫ</div>
+            <div class="section-text">
+                Внедрение ИИ-инфраструктуры позволило агентству разорвать шаблон «больше клиентов = больше штата». РИЧ получил собственный внутренний нейросетевой продакшн, готовый к масштабированию на федеральные проекты.
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">7 ДНЕЙ</div>
+                        <div class="metric-desc">От концета до&nbsp;работающей системы</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">-65%</div>
+                        <div class="metric-desc">Затрат агентства на&nbsp;подобные SMM-проекты</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">5х</div>
+                        <div class="metric-desc">Скорость создания контента (текст + визуал)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="next-project">
+            <div class="next-label">Следующий проект</div>
+            <a href="https://neirofactura.ru/cases/case-fintech.html" class="next-title">Финансовая логистика и ВЭД →</a>
+        </footer>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

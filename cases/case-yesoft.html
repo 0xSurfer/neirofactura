@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейс YESOFT — Мультиязычный e-commerce и AI-SEO | NEIROFACTURA</title>
+    <meta name="description" content="Автоматизация SEO и локализации для международного дискаунтера ПО. MCP-серверы, мультиязычный контент, гибридный видеопродакшн.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" href="../assets/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syncopate:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    
+    <style>
+        .case-header {
+            padding: 160px 40px 80px;
+            position: relative;
+            z-index: 10;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .case-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .case-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 60px;
+        }
+
+        .case-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            border-top: 1px solid var(--grid-line);
+            padding-top: 40px;
+        }
+
+        .meta-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .content-section {
+            padding: 80px 40px;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #888;
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .section-text {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background-color: var(--grid-line);
+            border: 1px solid var(--grid-line);
+            margin-top: 40px;
+        }
+
+        .metric-card {
+            background-color: var(--bg-color);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .metric-desc {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .image-gallery {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .gallery-img {
+            width: 100%;
+            background: #111;
+            border: 1px solid var(--grid-line);
+            overflow: hidden;
+        }
+
+        .gallery-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-img.wide {
+            grid-column: span 2;
+        }
+
+        .gallery-img.half {
+            aspect-ratio: 3/4;
+        }
+
+        .gallery-img.half img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-img.half img {
+            object-position: left center;
+        }
+
+        .gallery-img.half + .gallery-img.half img {
+            object-position: top center;
+        }
+
+        .gallery-img.wide {
+            grid-column: span 2;
+            aspect-ratio: 21/9;
+        }
+
+        .next-project {
+            text-align: center;
+            padding: 100px 40px;
+            border-top: 1px solid var(--grid-line);
+        }
+
+        .next-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .next-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: opacity 0.3s;
+            position: relative;
+        }
+
+        .next-title:hover {
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .content-section { grid-template-columns: 1fr; gap: 40px; }
+            .case-meta-grid { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .section-label { position: static; }
+            .image-gallery { grid-template-columns: 1fr; }
+            .gallery-img.wide, .gallery-img.half { grid-column: span 1; }
+            .case-header { padding: 140px 24px 60px; }
+            .content-section { padding: 60px 24px; }
+            .image-gallery { padding: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .case-meta-grid { grid-template-columns: 1fr; }
+            .metric-value { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+    
+    <div class="grid-lines">
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+    </div>
+    
+    <div class="corner-mark tl"></div>
+    <div class="corner-mark tr"></div>
+    <div class="corner-mark bl"></div>
+    <div class="corner-mark br"></div>
+    
+    <header class="header">
+        <a href="https://neirofactura.ru/" class="brand glitch-hover">NEIROFACTURA™</a>
+        <button class="burger" aria-label="Открыть меню">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+        </button>
+        <nav class="nav nav--desktop">
+            <a href="https://neirofactura.ru/#methodology" class="nav__link">Методология</a>
+            <a href="https://neirofactura.ru/#services" class="nav__link">Услуги</a>
+            <a href="https://neirofactura.ru/#portfolio" class="nav__link">Кейсы</a>
+            <a href="https://neirofactura.ru/#contact" class="nav__link">Контакты</a>
+        </nav>
+    </header>
+    
+    <nav class="nav nav--mobile">
+        <a href="https://neirofactura.ru/#methodology" class="nav__link">Методология</a>
+        <a href="https://neirofactura.ru/#services" class="nav__link">Услуги</a>
+        <a href="https://neirofactura.ru/#portfolio" class="nav__link">Кейсы</a>
+        <a href="https://neirofactura.ru/#contact" class="nav__link">Контакты</a>
+    </nav>
+
+    <main>
+        <section class="case-header">
+            <div class="case-category">Кейс // 004</div>
+            <h1 class="case-title">YESOFT: МУЛЬТИЯЗЫЧНЫЙ<br>E-COMMERCE</h1>
+            
+            <div class="case-meta-grid">
+                <div class="meta-col">
+                    <div class="meta-label">Клиент</div>
+                    <div class="meta-value">YESOFT STORE</div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">Услуги</div>
+                    <div class="meta-value">AI-SEO (MCP) / Мультиязычный пайплайн / Гибридный видеопродакшн</div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">Индустрия</div>
+                    <div class="meta-value">IT / Global Retail / E-commerce</div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">Год</div>
+                    <div class="meta-value">2025</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">О ПРОЕКТЕ</div>
+            <div class="section-text">
+                YESOFT STORE — международный дискаунтер программного обеспечения, оперирующий на рынках Испании и Латинской Америки, с планами экспансии в DACH-регион (Германия) и другие европейске страны. Проект изначально задумывался как технологический бенчмарк: создание глобального ритейл-бизнеса, где рутинные контентные и SEO-процессы управляются ИИ-агентами.
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">ЗАДАЧА</div>
+            <div class="section-text">
+                Классический выход E-com проекта на новые рынки требует колоссальных бюджетов на локализацию. Клиенту нужно было развернуть сотни страниц под каждый продукт: коммерческие описания, загрузочные хабы и детальные инструкции. При этом контент должен был строго учитывать культурный контекст (например, фокус на легальность в Германии и доступность в Испании). Проводить SEO-оптимизацию, перевод и запись видеотуториалов традиционным ручным трудом было экономически нецелесообразно.
+            </div>
+        </section>
+
+        <section class="image-gallery">
+            <!-- Ряд 1: Hero -->
+            <div class="gallery-img wide">
+                <img src="../assets/yesoft_hero.webp" alt="YESOFT — Hero">
+            </div>
+            <!-- Ряд 2: 2 изображения одинаковой высоты -->
+            <div class="gallery-img half">
+                <img src="../assets/yesoft_2.webp" alt="YESOFT — изображение 2">
+            </div>
+            <div class="gallery-img half">
+                <img src="../assets/yesoft_3.webp" alt="YESOFT — изображение 3">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">РЕШЕНИЕ</div>
+            <div class="section-text">
+                NEIROFACTURA спроектировала автономную мультиязычную фабрику контента с подходом human-in-the-loop:<br><br><span class="methodology-highlight">SEO-архитектура.</span> Мы подключили ИИ-агентов к данным через MCP-серверы (Model Context Protocol). Система автономно занимается подбором семантики и кластеризацией запросов. Человек лишь контролирует и валидирует результат, что кратно ускоряет работу и дает недостижимое для ручного сбора качество структуры.<br><br><span class="methodology-highlight">Локализация смыслов.</span> Агенты генерируют посадочные страницы и гайды, автоматически меняя позиционирование: от акцента на "Dauerlizenz" (вечная лицензия) для немцев до отработки возражений по пиратским активаторам для испанцев.<br><br><span class="methodology-highlight">Гибридный видеопродакшн.</span> Для создания инструкций мы внедрили пайплайны, которые берут на себя генерацию сценариев и нативную ИИ-озвучку с идеальным региональным акцентом. За командой остается только запись скринкастов и финальный ручной монтаж, что сокращает цикл производства видео в разы.
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">РЕЗУЛЬТАТЫ</div>
+            <div class="section-text">
+                Архитектура доказала, что глобальная экспансия больше не привязана к размеру штата. Клиент получил инфраструктуру, позволяющую разворачивать новые языковые версии магазина с минимальными предельными издержками на продакшн.
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">4 ЯЗЫКА</div>
+                        <div class="metric-desc">Генерация всего контента и&nbsp;создание базы знаний</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">MCP</div>
+                        <div class="metric-desc">Для работы с&nbsp;семантикой на&nbsp;всех языках</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">300+</div>
+                        <div class="metric-desc">Страниц контента</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="next-project">
+            <div class="next-label">Следующий проект</div>
+            <a href="https://neirofactura.ru/cases/case-elbrus.html" class="next-title">ELBRUS HOME: ОАЭ / MARKET RESEARCH →</a>
+        </footer>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

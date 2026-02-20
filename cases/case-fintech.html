@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейс финансовая логистика — AI-Newsroom и Deep Research | NEIROFACTURA</title>
+    <meta name="description" content="AI-Newsroom для платежного агента: мгновенная реакция на санкции и глубокие аналитические исследования. Мультиагентные системы для FinTech и ВЭД.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" href="../assets/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syncopate:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    
+    <style>
+        .case-header {
+            padding: 160px 40px 80px;
+            position: relative;
+            z-index: 10;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .case-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .case-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 60px;
+        }
+
+        .case-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            border-top: 1px solid var(--grid-line);
+            padding-top: 40px;
+        }
+
+        .meta-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .content-section {
+            padding: 80px 40px;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #888;
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .section-text {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background-color: var(--grid-line);
+            border: 1px solid var(--grid-line);
+            margin-top: 40px;
+        }
+
+        .metric-card {
+            background-color: var(--bg-color);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .metric-desc {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .image-gallery {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 40px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .gallery-img {
+            width: 100%;
+            background: #111;
+            border: 1px solid var(--grid-line);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-img img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Ряд 1: Hero на всю ширину */
+        .gallery-img.wide {
+            grid-column: span 6;
+        }
+
+        /* Ряды 2-3: по 2 изображения */
+        .gallery-img.half {
+            grid-column: span 3;
+        }
+
+        .next-project {
+            text-align: center;
+            padding: 100px 40px;
+            border-top: 1px solid var(--grid-line);
+        }
+
+        .next-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .next-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: opacity 0.3s;
+            position: relative;
+        }
+
+        .next-title:hover {
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .content-section { grid-template-columns: 1fr; gap: 40px; }
+            .case-meta-grid { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .section-label { position: static; }
+            .image-gallery { grid-template-columns: 1fr; }
+            .gallery-img.wide, .gallery-img.half { grid-column: span 6; }
+            .case-header { padding: 140px 24px 60px; }
+            .content-section { padding: 60px 24px; }
+            .image-gallery { padding: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .case-meta-grid { grid-template-columns: 1fr; }
+            .metric-value { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+    
+    <div class="grid-lines">
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+    </div>
+    
+    <div class="corner-mark tl"></div>
+    <div class="corner-mark tr"></div>
+    <div class="corner-mark bl"></div>
+    <div class="corner-mark br"></div>
+    
+    <header class="header">
+        <a href="https://neirofactura.ru/" class="brand glitch-hover">NEIROFACTURA™</a>
+        <button class="burger" aria-label="Открыть меню">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+        </button>
+        <nav class="nav nav--desktop">
+            <a href="https://neirofactura.ru/#methodology" class="nav__link">Методология</a>
+            <a href="https://neirofactura.ru/#services" class="nav__link">Услуги</a>
+            <a href="https://neirofactura.ru/#portfolio" class="nav__link">Кейсы</a>
+            <a href="https://neirofactura.ru/#contact" class="nav__link">Контакты</a>
+        </nav>
+    </header>
+    
+    <nav class="nav nav--mobile">
+        <a href="https://neirofactura.ru/#methodology" class="nav__link">Методология</a>
+        <a href="https://neirofactura.ru/#services" class="nav__link">Услуги</a>
+        <a href="https://neirofactura.ru/#portfolio" class="nav__link">Кейсы</a>
+        <a href="https://neirofactura.ru/#contact" class="nav__link">Контакты</a>
+    </nav>
+
+    <main>
+        <section class="case-header">
+            <div class="case-category">Кейс // 002</div>
+            <h1 class="case-title">Финансовая<br>логистика и ВЭД</h1>
+            
+            <div class="case-meta-grid">
+                <div class="meta-col">
+                    <div class="meta-label">Клиент</div>
+                    <div class="meta-value">МЕЖДУНАРОДНЫЙ ПЛАТЕЖНЫЙ АГЕНТ</div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">Услуги</div>
+                    <div class="meta-value">AI-Newsroom / Мультиагентный Deep Research / Креативный Copilot</div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">Индустрия</div>
+                    <div class="meta-value">FinTech / ВЭД / Финансовая логистика</div>
+                </div>
+                <div class="meta-col">
+                    <div class="meta-label">Год</div>
+                    <div class="meta-value">2025</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">О ПРОЕКТЕ</div>
+            <div class="section-text">
+                Клиент работает в одной из самых сложных и турбулентных ниш — трансграничные переводы, AML-скоринг и международный комплаенс. Нашей задачей было закрепить за брендом статус непререкаемого эксперта в условиях деглобализации, где правила игры меняются еженедельно.
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">ЗАДАЧА</div>
+            <div class="section-text">
+                Контентная стратегия требовала работы на двух скоростях. С одной стороны — мгновенная реакция на изменения: новые санкции и вводные. С другой — фундаментальная аналитика и «вечнозеленые» лонгриды: например, ретроспектива изменения расчетов с Китаем за последние два года. Традиционный отдел аналитики не справлялся бы с таким сплитом задач. Клиенту требовалась система, способная как фильтровать новостной шум, так и проводить глубокие кабинетные исследования.
+            </div>
+        </section>
+
+        <section class="image-gallery">
+            <!-- Ряд 1: Hero -->
+            <div class="gallery-img wide">
+                <img src="../assets/case_beta_hero.webp" alt="Валютный контроль — Hero">
+            </div>
+            <!-- Ряд 2: 2 изображения -->
+            <div class="gallery-img half">
+                <img src="../assets/currency_hero.webp" alt="Brand DNA">
+            </div>
+            <div class="gallery-img half">
+                <img src="../assets/currency_strategy.webp" alt="Content Strategy">
+            </div>
+            <!-- Ряд 3: 2 изображения -->
+            <div class="gallery-img half">
+                <img src="../assets/currency_plan.webp" alt="Content Plan">
+            </div>
+            <div class="gallery-img half">
+                <img src="../assets/currency_dzen.webp" alt="Дзен канал">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">РЕШЕНИЕ</div>
+            <div class="section-text">
+                Мы развернули двуконтурную ИИ-архитектуру, закрывающую обе потребности:<br><br><span class="methodology-highlight">Контур 1: AI-Newsroom.</span> Настроили real-time мониторинг 25+ Tier-1 ресурсов (РБК, Коммерсантъ, нишевые каналы по ВЭД). Система просеивает поток через фильтры интересов нашей ЦА и при обнаружении критического инфоповода выдает формат «молнии» — готовую экспертную трактовку события простым языком.<br><br><span class="methodology-highlight">Контур 2: Мультиагентный Deep Research.</span> Для создания сложных лонгридов мы внедрили каскадную работу роя агентов. Процесс разбит на роли: Агент-Стратег формулирует запрос -> Агент-Ресерчер собирает историческую фактуру -> Агент-Аналитик интерпретирует данные -> Агент-Копирайтер пишет драфт. Финальный этап — Агент-Редактор «гуманизирует» текст, полностью вычищая ИИ-паттерны, чтобы материал читался как авторская колонка senior-эксперта.
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-label">РЕЗУЛЬТАТЫ</div>
+            <div class="section-text">
+                Внедрение гибридной системы позволило бренду стать для своей B2B-аудитории надежным радаром в мире ВЭД и финансовой логистики. Каналы бренда не просто транслируую новости, а продают ощущение возврата контроля над ситуацией, предсказуемость, прозрачность и снижение рисков.
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">5</div>
+                        <div class="metric-desc">Форматов материалов</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">15</div>
+                        <div class="metric-desc">УЗКОПРОФИЛЬНЫХ АГЕНТОВ</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">100%</div>
+                        <div class="metric-desc">Комплаенс и&nbsp;многоступенчатый фактчекинг</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="next-project">
+            <div class="next-label">Следующий проект</div>
+            <a href="https://neirofactura.ru/cases/case-yesoft.html" class="next-title">YESOFT: МУЛЬТИЯЗЫЧНЫЙ E-COM →</a>
+        </footer>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Страница не найдена | NEIROFACTURA</title>
+    <meta name="description" content="Запрашиваемая страница не найдена. Вернитесь на главную NEIROFACTURA.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" href="../assets/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syncopate:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    
+    <style>
+        .error-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 40px 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .error-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .error-code {
+            font-family: var(--font-display);
+            font-size: clamp(6rem, 15vw, 12rem);
+            line-height: 1;
+            letter-spacing: -0.05em;
+            margin-bottom: 24px;
+            color: var(--text-color);
+            position: relative;
+            z-index: 10;
+        }
+
+        .error-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 10;
+        }
+
+        .error-desc {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-dim);
+            max-width: 500px;
+            margin-bottom: 48px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 10;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .error-link {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--grid-line);
+            padding: 16px 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            background-color: rgba(5, 5, 5, 0.5);
+        }
+
+        .error-link:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .tech-info {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            text-align: center;
+            z-index: 10;
+            letter-spacing: 1px;
+        }
+
+        .tech-info__code {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .error-section {
+                padding: 120px 24px 60px;
+            }
+            
+            .error-actions {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 60px;
+            }
+            
+            .error-link {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .tech-info {
+                bottom: 24px;
+                font-size: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+    
+    <!-- Background Waves -->
+    <canvas id="wavesCanvas" class="error-canvas"></canvas>
+    
+    <div class="corner-mark tl"></div>
+    <div class="corner-mark tr"></div>
+    <div class="corner-mark bl"></div>
+    <div class="corner-mark br"></div>
+    
+    <header class="header">
+        <a href="https://neirofactura.ru/" class="brand glitch-hover">NEIROFACTURA™</a>
+        <button class="burger" aria-label="Открыть меню">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+        </button>
+        <nav class="nav nav--desktop">
+            <a href="https://neirofactura.ru/#methodology" class="nav__link">Методология</a>
+            <a href="https://neirofactura.ru/#services" class="nav__link">Услуги</a>
+            <a href="https://neirofactura.ru/#portfolio" class="nav__link">Кейсы</a>
+            <a href="https://neirofactura.ru/#contact" class="nav__link">Контакты</a>
+        </nav>
+    </header>
+    
+    <nav class="nav nav--mobile">
+        <a href="https://neirofactura.ru/#methodology" class="nav__link">Методология</a>
+        <a href="https://neirofactura.ru/#services" class="nav__link">Услуги</a>
+        <a href="https://neirofactura.ru/#portfolio" class="nav__link">Кейсы</a>
+        <a href="https://neirofactura.ru/#contact" class="nav__link">Контакты</a>
+    </nav>
+
+    <main>
+        <section class="error-section">
+            <div class="error-code glitch-hover">404</div>
+            <h1 class="error-title">СТРАНИЦА НЕ НАЙДЕНА</h1>
+            <p class="error-desc">
+                Возможно, неверный адрес или страница была удалена.
+            </p>
+            <div class="error-actions">
+                <a href="https://neirofactura.ru/" class="error-link">На главную</a>
+                <a href="https://neirofactura.ru/#portfolio" class="error-link">К кейсам</a>
+            </div>
+        </section>
+    </main>
+    
+    <div class="tech-info">
+        <div>ERR_NOT_FOUND</div>
+        <div class="tech-info__code">ID: 404_0x0F | NODE: NULL</div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

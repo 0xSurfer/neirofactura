@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Согласие на обработку персональных данных | NEIROFACTURA</title>
+    <meta name="description" content="Форма согласия на обработку персональных данных пользователей сайта NEIROFACTURA.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" href="../assets/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syncopate:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    
+    <style>
+        .legal-header {
+            padding: 160px 40px 60px;
+            position: relative;
+            z-index: 10;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .legal-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .legal-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+        }
+
+        .legal-content {
+            padding: 60px 40px;
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+        }
+
+        .legal-text {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .legal-text h2 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--text-color);
+            margin: 48px 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .legal-text h2:first-child {
+            margin-top: 0;
+        }
+
+        .legal-text p {
+            margin-bottom: 16px;
+        }
+
+        .legal-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .operator-info {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--grid-line);
+            line-height: 1.8;
+        }
+
+        .legal-text a {
+            color: var(--text-color);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: opacity 0.3s;
+        }
+
+        .legal-text a:hover {
+            opacity: 0.6;
+        }
+
+        .back-link {
+            text-align: center;
+            padding: 80px 40px;
+            border-top: 1px solid var(--grid-line);
+        }
+
+        .back-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .back-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: opacity 0.3s;
+        }
+
+        .back-title:hover {
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .legal-header { padding: 140px 24px 40px; }
+            .legal-content { padding: 40px 24px; }
+            .back-link { padding: 60px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+    
+    <header class="header">
+        <a href="https://neirofactura.ru/" class="brand glitch-hover">NEIROFACTURA™</a>
+        <button class="burger" aria-label="Открыть меню">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+        </button>
+        <nav class="nav nav--desktop">
+            <a href="https://neirofactura.ru/#methodology" class="nav__link">Методология</a>
+            <a href="https://neirofactura.ru/#services" class="nav__link">Услуги</a>
+            <a href="https://neirofactura.ru/#portfolio" class="nav__link">Кейсы</a>
+            <a href="https://neirofactura.ru/#contact" class="nav__link">Контакты</a>
+        </nav>
+    </header>
+    
+    <nav class="nav nav--mobile">
+        <a href="https://neirofactura.ru/#methodology" class="nav__link">Методология</a>
+        <a href="https://neirofactura.ru/#services" class="nav__link">Услуги</a>
+        <a href="https://neirofactura.ru/#portfolio" class="nav__link">Кейсы</a>
+        <a href="https://neirofactura.ru/#contact" class="nav__link">Контакты</a>
+    </nav>
+
+    <main>
+        <section class="legal-header">
+            <div class="legal-category">[ЮРИДИЧЕСКАЯ ИНФОРМАЦИЯ]</div>
+            <h1 class="legal-title">СОГЛАСИЕ НА ОБРАБОТКУ<br>ПЕРСОНАЛЬНЫХ ДАННЫХ</h1>
+        </section>
+
+        <section class="legal-content">
+            <div class="operator-info">
+                Индивидуальный предприниматель<br>
+                Сыромолотов Игорь Александрович<br>
+                ИНН 590204005590<br>
+                ОГРНИП 325527500111981
+            </div>
+
+            <div class="legal-text">
+                <p>В соответствии с требованиями Федерального закона № 152-ФЗ «О персональных данных», действуя свободно, своей волей и в своем интересе, а также подтверждая свою дееспособность, я (далее – «Пользователь») даю свое согласие ИП Сыромолотову Игорю Александровичу (ИНН 590204005590, ОГРНИП 325527500111981), которому принадлежит Сайт https://neirofactura.ru/ на обработку своих персональных данных на следующих условиях.</p>
+
+                <p>Данное согласие дается на обработку персональных данных, как без использования средств автоматизации, так и с их использованием.</p>
+
+                <p>Согласие дается на обработку следующих моих персональных данных: персональные данные, не относящиеся к специальной категории персональных данных или к биометрическим персональным данным: фамилия, имя, отчество; адрес электронной почты (E-mail); номер мобильного телефона; логин в Telegram; паспортные данные (в случае необходимости); полные реквизиты счета (в случае необходимости); дата, месяц, год, место рождения (в случае необходимости).</p>
+
+                <h2>Цель обработки персональных данных:</h2>
+                <p>— Обработка заказа/заявки на получение услуг и идентификации Пользователя</p>
+                <p>— Обработка и получение платежей, оспаривания платежа</p>
+                <p>— Предоставление Пользователю возможности использовать Сайт</p>
+                <p>— Предоставление Пользователю клиентской и технической поддержки при возникновении проблем, связанных с использованием Сайта и (или) услуг, предоставляемых Оператором посредством Сайта</p>
+                <p>— Осуществление рекламной и новостной рассылки, информационных звонков на номер мобильного телефона Пользователя</p>
+                <p>— Обработка всех видов обращений, направляемых Оператору</p>
+                <p>— Публикация на Сайте и других ресурсах Оператора информации о Пользователе и его отзыве об услугах Оператора</p>
+                <p>— Предоставление доступа к информации, содержащейся на Сайте Оператора, в мессенджере Telegram.</p>
+
+                <p>В ходе обработки с персональными данными будут совершены следующие действия: сбор; запись; систематизация; накопление; хранение; уточнение (обновление, изменение); извлечение; использование; передача (предоставление, доступ); блокирование; удаление; уничтожение.</p>
+
+                <p>Оператор обрабатывает персональные данные в соответствии с <a href="https://neirofactura.ru/legal/privacy.html">Политикой конфиденциальности</a>, размещенной на Сайте.</p>
+
+                <h2>Я согласен квалифицировать в качестве простой электронной подписи под согласием и <a href="https://neirofactura.ru/legal/privacy.html">Политикой конфиденциальности</a> Оператора выполнение мною одного или в совокупности следующих действий:</h2>
+
+                <p>— Простановка мною символа в чек-боксе (в поле для ввода) рядом с текстом: «Нажимая на кнопку, вы подтверждаете, что ознакомлены с <a href="https://neirofactura.ru/legal/privacy.html">политикой конфиденциальности</a> и даёте согласие на обработку своих персональных данных.», либо</p>
+                <p>— Нажатие мною на элемент интерфейса с текстом «Позвоните мне», либо</p>
+                <p>— Путем нажатия кнопки на элемент интерфейса с текстом «Отправить заявку», либо</p>
+                <p>— Направления в ответ на предоставленные для ознакомления документы подтверждения о том, что я ознакомлен с условиями обработки персональных данных и условиями публичной оферты Оператора.</p>
+
+                <p>Согласие действует с момента его предоставления и до момента отзыва.</p>
+
+                <h2>Я вправе отозвать согласие путем:</h2>
+
+                <p>— Направления Оператору заявления в форме электронного документа в мессенджере Telegram, либо</p>
+                <p>— Направления Оператору заявления в форме электронного документа по адресу электронной почты team@neirofactura.ru с пометкой «Отказ от уведомлений о новых услугах и специальных предложениях», либо</p>
+                <p>— Самостоятельной отписки от рассылки, нажав на ссылку для отписки.</p>
+            </div>
+        </section>
+
+        <footer class="back-link">
+            <div class="back-label">Навигация</div>
+            <a href="https://neirofactura.ru/" class="back-title">НА ГЛАВНУЮ →</a>
+        </footer>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

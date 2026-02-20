@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEIROFACTURA — Внедрение ИИ в маркетинг | AI-аудит, агенты, контент</title>
+    <meta name="description" content="Ваш теневой ИИ-отдел. Интегрируем нейросетевые решения в процессы компаний и агентств. Снижаем стоимость производства и аналитики до 70% без потери качества.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" href="assets/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neirofactura.ru/">
+    <meta property="og:title" content="NEIROFACTURA — Внедрение ИИ в маркетинг">
+    <meta property="og:description" content="Инфраструктура AI-маркетинга. AI-аудит, креативный copilot, генерация визуалов и видео.">
+    <meta property="og:image" content="https://neirofactura.ru/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syncopate:wght@700&family=Inter:wght@400;600&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <style>
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: rgba(10, 10, 10, 0.95);
+            border: 1px solid var(--grid-line);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            max-width: 90vw;
+        }
+        
+        .cookie-banner.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .cookie-banner__text {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        
+        .cookie-banner__text a {
+            color: var(--text-color);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: opacity 0.3s;
+        }
+        
+        .cookie-banner__text a:hover {
+            opacity: 0.6;
+        }
+        
+        .cookie-banner__button {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-color);
+            background-color: transparent;
+            border: 1px solid var(--grid-line);
+            padding: 8px 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .cookie-banner__button:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+        
+        @media (max-width: 640px) {
+            .cookie-banner {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+                padding: 20px;
+                bottom: 16px;
+            }
+            
+            .cookie-banner__button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+    
+    <!-- Background Grid -->
+    <div class="grid-lines">
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+    </div>
+    
+    <!-- Corner Marks -->
+    <div class="corner-mark tl"></div>
+    <div class="corner-mark tr"></div>
+    <div class="corner-mark bl"></div>
+    <div class="corner-mark br"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <a href="https://neirofactura.ru/" class="brand glitch-hover">NEIROFACTURA™</a>
+        <!-- Desktop Navigation -->
+        <nav class="nav nav--desktop">
+            <a href="#methodology" class="nav__link">Методология</a>
+            <a href="#services" class="nav__link">Услуги</a>
+            <a href="#portfolio" class="nav__link">Кейсы</a>
+            <a href="#contact" class="nav__link">Контакты</a>
+        </nav>
+    </header>
+    
+    <!-- Burger (outside header to avoid mix-blend-mode issues) -->
+    <button class="burger" aria-label="Открыть меню">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+    </button>
+    
+    <!-- Mobile Navigation (outside header for proper z-index) -->
+    <nav class="nav nav--mobile">
+        <a href="#methodology" class="nav__link">Методология</a>
+        <a href="#services" class="nav__link">Услуги</a>
+        <a href="#portfolio" class="nav__link">Кейсы</a>
+        <a href="#contact" class="nav__link">Контакты</a>
+    </nav>
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <canvas id="wavesCanvas" class="hero__canvas"></canvas>
+            
+            <div class="hero__content">
+                <div class="hero__headline">
+                    <h1 class="hero__title">ИНФРАСТРУТУРА</h1>
+                    <h1 class="hero__title">AI-МАРКЕТИНГА</h1>
+                </div>
+                
+                <p class="hero__subtitle">
+                    Ваш теневой ИИ-отдел. Интегрируем нейросетевые решения в&nbsp;процессы компаний и&nbsp;агентств. Снижаем стоимость производства и&nbsp;аналитики до&nbsp;70% без&nbsp;потери качества.
+                </p>
+                
+                <div class="hero__cta">
+                    <a href="#contact" class="btn btn--primary">ОБСУДИТЬ ВНЕДРЕНИЕ</a>
+                </div>
+            </div>
+            
+            <div class="hero__vertical-text">
+                SYS.OP.884_X
+            </div>
+            
+            <div class="hero__specs">
+                <div class="spec-block">
+                    <span>LAT: 55.7569 N</span>
+                    <span>LON: 37.6151 E</span>
+                </div>
+                <div class="spec-block" style="text-align: center;">
+                    <span>MODEL: OPUS 4.6</span>
+                    <span>STATUS: OPERATIONAL</span>
+                </div>
+                <div class="spec-block" style="text-align: right;">
+                    <span>© 2026 NEIROFACTURA™</span>
+                    <span>ВСЕ ПРАВА ЗАЩИЩЕНЫ</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Methodology Section -->
+        <section class="methodology" id="methodology">
+            <div class="section-header">
+                МЕТОДОЛОГИЯ
+                <span class="section-header__meta">[APPROACH]</span>
+            </div>
+
+            <div class="methodology-grid">
+                <div class="methodology-text-col">
+                    <p class="methodology-p">
+                        <span class="methodology-highlight">Индикатор успеха бизнеса</span> — не размер штата, а объем прибыли в пересчете на сотрудника. ИИ позволяет сделать маркетинг вашим внутренним активом, превращая команду из 2-3 человек в сверхэффективный бизнес-юнит, работающий без зависимости от подрядчиков.
+                    </p>
+                    <div style="width: 40px; height: 1px; background: #333;"></div>
+                    <p class="methodology-p">
+                        Мы встраиваем <span class="methodology-highlight">ИИ-инструменты в ваши существующие процессы</span>. Нейросети забирают на себя объем, скорость и черновую обработку данных, кратно снижая себестоимость. Ваша команда оставляет за собой стратегию и контроль смыслов. То, что раньше требовало внешнего продакшена, теперь делается внутри — за часы, а не недели.
+                    </p>
+                </div>
+
+                <!-- Visual Diagram -->
+                <div class="visual-container">
+                    <div class="tech-decor td-tl">/// SYS.DIAGRAM_01</div>
+                    <div class="tech-decor td-tr">AI.EFFICIENCY</div>
+                    <div class="tech-decor td-bl">REV: 2.0</div>
+                    <div class="tech-decor td-br">STATUS: OPTIMAL</div>
+
+                    <div class="diagram-wrapper">
+                        <!-- Node 1: STRATEGY -->
+                        <div class="diagram-box node-box" data-node="1">
+                            <svg class="node-progress" width="100%" height="100%" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+                                <rect class="progress-rect" x="0" y="0" width="100%" height="100%" fill="none" stroke="#00FF88" stroke-width="2" stroke-dasharray="1000" stroke-dashoffset="1000"></rect>
+                            </svg>
+                            ВАША КОМАНДА
+                            <span class="sub-label">СТРАТЕГИЯ И УПРАВЛЕНИЕ</span>
+                        </div>
+
+                        <!-- Connector 1 -->
+                        <div class="diagram-connector connector-line" data-connector="1">
+                            <div class="connector-pulse"></div>
+                        </div>
+
+                        <!-- Node 2: NEURAL ENGINE -->
+                        <div class="diagram-box node-box node-box--center" data-node="2">
+                            <svg class="node-progress" width="100%" height="100%" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+                                <rect class="progress-rect" x="0" y="0" width="100%" height="100%" fill="none" stroke="#00FF88" stroke-width="4" stroke-dasharray="1200" stroke-dashoffset="1200"></rect>
+                            </svg>
+                            AI-ИНФРАСТРУКТУРА
+                            <span class="sub-label">ПРОДАКШН И РАБОТА С ДАННЫМИ</span>
+                            <div class="metric-badges">
+                                <div class="metric-badge"><span>СКОРОСТЬ</span> <b>10x</b></div>
+                                <div class="metric-badge"><span>ЦЕНА</span> <b>0.25x</b></div>
+                            </div>
+                        </div>
+
+                        <!-- Connector 2 -->
+                        <div class="diagram-connector connector-line" data-connector="2">
+                            <div class="connector-pulse"></div>
+                        </div>
+
+                        <!-- Node 3: EXECUTION -->
+                        <div class="diagram-box node-box" data-node="3">
+                            <svg class="node-progress" width="100%" height="100%" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+                                <rect class="progress-rect" x="0" y="0" width="100%" height="100%" fill="none" stroke="#00FF88" stroke-width="2" stroke-dasharray="1000" stroke-dashoffset="1000"></rect>
+                            </svg>
+                            ВАША АУДИТОРИЯ
+                            <span class="sub-label">КОНТЕНТ И АНАЛИТИКА</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="section-header">
+                УСЛУГИ
+                <span class="section-header__meta">[001-004]</span>
+            </div>
+            
+            <div class="services__grid">
+                <article class="service-card">
+                    <div class="service-card__num">01</div>
+                    <div>
+                        <h3 class="service-card__title">AI-АУДИТ<br>И ОЦИФРОВКА</h3>
+                        <p class="service-card__desc">Проектируем архитектуру вашей будущей маркетинг-системы. Оцифровываем Tone of Voice, собираем корпоративную базу знаний и настраиваем фильтры безопасности. Мы учим ИИ думать как ваш лучший эксперт и опираться только на ваши данные.</p>
+                    </div>
+                    <div class="service-card__icon"></div>
+                </article>
+                
+                <article class="service-card">
+                    <div class="service-card__num">02</div>
+                    <div>
+                        <h3 class="service-card__title">КРЕАТИВНЫЙ COPILOT<br>И РАБОТА С ТЕКСТОМ</h3>
+                        <p class="service-card__desc">Обычные чат-боты требуют брифинга с нуля при каждом запуске или галюцинируют от забитого контекстного окна. Мы разворачиваем рой ИИ-агентов с динамической памятью — ваш корпоративный «второй мозг» для глубокой аналитики, совместных брейнштормов и потоковой генерации сложного контента.</p>
+                    </div>
+                    <div class="service-card__icon"></div>
+                </article>
+                
+                <article class="service-card">
+                    <div class="service-card__num">03</div>
+                    <div>
+                        <h3 class="service-card__title">СИНТЕЗ ИЗОБРАЖЕНИЙ<br>И ВИДЕО</h3>
+                        <p class="service-card__desc">Внедряем пайплайны для потокового производства любого визуального контента: от статической графики и фотографий до полноценных видеороликов. Студийный продакшн, который на 100% подчинен гайдлайнам вашего бренда и позволяет сократить расходы на съемки.</p>
+                    </div>
+                    <div class="service-card__icon"></div>
+                </article>
+                
+                <article class="service-card">
+                    <div class="service-card__num">04</div>
+                    <div>
+                        <h3 class="service-card__title">ИНТЕГРАЦИЯ<br>И КОНСАЛТИНГ</h3>
+                        <p class="service-card__desc">Технологии не работают без людей. Обучаем вашу команду управлять базой знаний и ставить задачи ИИ-агентам. Снимаем сопротивление инновациям и бесшовно встраиваем нейросети в бизнес-процессы компании.</p>
+                    </div>
+                    <div class="service-card__icon"></div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- Portfolio Section -->
+        <section class="portfolio" id="portfolio">
+            <div class="section-header">
+                КЕЙСЫ
+                <span class="section-header__meta">[ARCHIVE_26]</span>
+            </div>
+            
+            <div class="portfolio__grid">
+                <a href="https://neirofactura.ru/cases/case-rich.html" class="portfolio-item">
+                    <div class="portfolio-item__image">
+                        <div class="portfolio-item__overlay"></div>
+<video autoplay muted loop playsinline preload="metadata" 
+                               poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop">
+                            <source src="assets/rich_preview.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="portfolio-item__meta">
+                        <div class="portfolio-item__title">РИЧ х NEIROFACTURA</div>
+                        <div class="portfolio-item__tags">
+                            AI-АУДИТ / COPILOT / ПАЙПЛАЙНЫ ВИЗУАЛОВ<br>
+                            2026
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://neirofactura.ru/cases/case-fintech.html" class="portfolio-item">
+                    <div class="portfolio-item__image">
+                        <div class="portfolio-item__overlay"></div>
+                        <img src="assets/case_beta_hero.webp" 
+                             alt="Финансовая логистика и ВЭД" 
+                             loading="lazy">
+                    </div>
+                    <div class="portfolio-item__meta">
+                        <div class="portfolio-item__title">ФИНАНСОВАЯ ЛОГИСТИКА И ВЭД</div>
+                        <div class="portfolio-item__tags">
+                            AI-NEWSROOM / DEEP RESEARCH / COPILOT<br>
+                            2025
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://neirofactura.ru/cases/case-yesoft.html" class="portfolio-item">
+                    <div class="portfolio-item__image">
+                        <div class="portfolio-item__overlay"></div>
+                        <img src="assets/case_gamma_hero.webp" 
+                             alt="YESOFT — мультиязычный e-commerce" 
+                             loading="lazy"
+                             class="align-top">
+                    </div>
+                    <div class="portfolio-item__meta">
+                        <div class="portfolio-item__title">YESOFT: МУЛЬТИЯЗЫЧНЫЙ E-COMMERCE</div>
+                        <div class="portfolio-item__tags">
+                            AI-SEO (MCP) / МУЛЬТИЯЗЫЧНЫЙ КОНТЕНТ<br>
+                            2025
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://neirofactura.ru/cases/case-elbrus.html" class="portfolio-item">
+                    <div class="portfolio-item__image">
+                        <div class="portfolio-item__overlay"></div>
+                        <img src="assets/photo_2023-02-22_080.png.webp" 
+                             alt="Elbrus Home — исследование рынка ОАЭ" 
+                             loading="lazy">
+                    </div>
+                    <div class="portfolio-item__meta">
+                        <div class="portfolio-item__title">ELBRUS HOME: РЫНОК ОАЭ / MARKET RESEARCH</div>
+                        <div class="portfolio-item__tags">
+                            AI DEEP RESEARCH / ПАРCИНГ / СТРАТЕГИЯ<br>
+                            2025
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="cta__decor">/// INITIATE SEQUENCE</div>
+            <h2 class="cta__title">ГОТОВЫ К ВНЕДРЕНИЮ<br>ИИ В ВАШ БИЗНЕС?</h2>
+            <a href="https://t.me/daposchitaem" class="btn btn--inverse" target="_blank" rel="noopener">ЗАБРОНИРОВАТЬ АУДИТ</a>
+        </section>
+    </main>
+    
+    <!-- Contact / Footer Section -->
+    <footer class="contact" id="contact">
+        <div class="contact__grid">
+            <div class="contact__col">
+                <div class="contact__brand">NEIROFACTURA™</div>
+                <p class="contact__tagline">
+                    Проектируем и внедряем мультиагентные ИИ-системы. Превращаем маркетинг в ваш внутренний актив.
+                </p>
+            </div>
+            
+            <div class="contact-group">
+                <h4 class="contact-group__title">Карта сайта</h4>
+                <a href="https://neirofactura.ru/" class="contact-group__link">Главная</a>
+                <a href="#methodology" class="contact-group__link">Методология</a>
+                <a href="#services" class="contact-group__link">Услуги</a>
+                <a href="#portfolio" class="contact-group__link">Кейсы</a>
+            </div>
+            
+            <div class="contact-group">
+                <h4 class="contact-group__title">Контакты</h4>
+                <a href="mailto:team@neirofactura.ru" class="contact-group__link">team@neirofactura.ru</a>
+                <a href="https://t.me/daposchitaem" class="contact-group__link" target="_blank" rel="noopener">Telegram →</a>
+            </div>
+        </div>
+        
+        <div class="contact__copyright">
+            <div class="contact__copyright-left">© 2026 NEIROFACTURA™</div>
+            <div class="contact__legal">
+                <a href="https://neirofactura.ru/legal/privacy.html" class="contact__legal-link">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
+                <a href="https://neirofactura.ru/legal/consent.html" class="contact__legal-link">СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ</a>
+                <a href="https://neirofactura.ru/legal/cookie.html" class="contact__legal-link">ПОЛИТИКА ОБРАБОТКИ ФАЙЛОВ COOKIE</a>
+            </div>
+            <div class="contact__copyright-right">МОСКВА</div>
+        </div>
+    </footer>
+    
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p class="cookie-banner__text">
+            Мы используем файлы <a href="https://neirofactura.ru/legal/cookie.html">cookie</a>. Они нужны для оптимальной работы сайта.
+        </p>
+        <button class="cookie-banner__button" id="cookieAccept">Окей</button>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Cookie Banner Logic
+        (function() {
+            const banner = document.getElementById('cookieBanner');
+            const acceptBtn = document.getElementById('cookieAccept');
+            const consentKey = 'cookieConsent';
+            
+            // Check if user already accepted
+            if (!localStorage.getItem(consentKey)) {
+                // Show banner after a short delay
+                setTimeout(() => {
+                    banner.classList.add('visible');
+                }, 1000);
+            }
+            
+            // Handle accept button
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem(consentKey, 'true');
+                banner.classList.remove('visible');
+                
+                // Remove from DOM after animation
+                setTimeout(() => {
+                    banner.style.display = 'none';
+                }, 400);
+            });
+        })();
+    </script>
+</body>
+</html>

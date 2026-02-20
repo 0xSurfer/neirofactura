@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Python virtual environment
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
