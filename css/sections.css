@@ -582,6 +582,15 @@
     filter: grayscale(0%);
 }
 
+/* Отключаем grayscale на мобильных — изображения всегда цветные */
+@media (hover: none) and (pointer: coarse) {
+    .portfolio-item__image img,
+    .portfolio-item__image video {
+        opacity: 1;
+        filter: grayscale(0%);
+    }
+}
+
 .portfolio-item__overlay {
     position: absolute;
     inset: 0;
