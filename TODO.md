@@ -39,9 +39,9 @@
 ## Phase 3: Deploy [READY]
 - [x] Создать .gitignore (.DS_Store, .venv/)
 - [x] Создать страницу 404.html
-- [ ] Удалить .venv/ перед коммитом
-- [ ] Создать репозиторий Git
-- [ ] Залить проект на GitHub
+- [x] Удалить .venv/ перед коммитом
+- [x] Создать репозиторий Git
+- [x] Залить проект на GitHub
 - [ ] Настроить Coolify на VDS
 - [ ] Подключить домен neirofactura.ru
 - [ ] Настроить SSL (Let's Encrypt)
