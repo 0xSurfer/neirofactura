@@ -27,8 +27,8 @@ export function initCursor() {
         const dx = mouseX - cursorX;
         const dy = mouseY - cursorY;
         
-        cursorX += dx * 0.15;
-        cursorY += dy * 0.15;
+        cursorX += dx * 0.3;
+        cursorY += dy * 0.3;
         
         cursor.style.left = cursorX + 'px';
         cursor.style.top = cursorY + 'px';
