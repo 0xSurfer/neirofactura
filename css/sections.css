@@ -635,14 +635,20 @@
         flex-direction: column;
         gap: 12px;
     }
-    
+
     .portfolio-item__title {
         font-size: 1rem;
     }
-    
+
     .portfolio-item__tags {
         text-align: left;
     }
+}
+
+.portfolio__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
 }
 
 /* ----------------------------------------
